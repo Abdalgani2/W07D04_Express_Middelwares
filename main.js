@@ -39,3 +39,17 @@ authRouter.use("/users", (req, res, next) => {
   app.use((err, req, res, next) => {
     res.json("No users");
 });
+authRouter.use("/users", (req, res, next) => {
+    users.forEach(element =>{
+        res.json(element)
+    })
+    next();
+  });
+  app.post("/users/create",(req,res)=>{
+    const name = req.body.name;
+    users.push(name);
+})
+const product =["keyboard","mouse"];
+app.post("/products/update",(req,res,next)=>{
+   users.splice(0,req.body.data)
+})
